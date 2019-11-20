@@ -88,6 +88,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<finalName>ssi-tv-series</finalName>
 	</build>
 
 </project>
