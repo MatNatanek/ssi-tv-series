@@ -11,7 +11,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "serialtest", schema = "public")
+@Table(name = "Serial", schema = "public")
 public class SerialTestEntity implements Serializable {
 
     private static final long serialVersionUID = 8326322409303886520L;
