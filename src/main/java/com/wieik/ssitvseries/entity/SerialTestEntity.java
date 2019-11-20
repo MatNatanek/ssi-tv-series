@@ -22,6 +22,6 @@ public class SerialTestEntity implements Serializable {
     private Integer id;
 
     @Column(name = "tytuł")
-    private Integer tytuł;
+    private String tytuł;
 
 }
