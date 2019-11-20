@@ -24,6 +24,7 @@ public class SerialTestDaoImpl implements SerialTestDao {
 
     @Override
     public void save(SerialTestDao serialTestDao) {
+        System.out.println("test");
 
     }
 }
