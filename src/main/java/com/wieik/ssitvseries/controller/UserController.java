@@ -2,6 +2,7 @@ package com.wieik.ssitvseries.controller;
 
 import com.wieik.ssitvseries.Service.UserService;
 import com.wieik.ssitvseries.entity.UserEntity;
+import com.wieik.ssitvseries.json.userJson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,6 +27,11 @@ public class UserController {
     @PostMapping
     public void saveUser(@RequestBody UserEntity userEntity){
         userService.saveUser(userEntity);
+    }
+
+    @PostMapping
+    public void saveUser2(@RequestBody userJson userJson){
+        userService.saveUser2(userJson);
     }
 
 
