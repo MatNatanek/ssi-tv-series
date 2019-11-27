@@ -31,7 +31,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public void saveUser2(userJson userJson) {
         UserEntity userEntity = new UserEntity();
-        userEntity.setIdUser(14);
         userEntity.setLastName(userJson.getLastName());
         userDao.save(userEntity);
     }
