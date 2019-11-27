@@ -11,5 +11,5 @@ public interface UserService {
 
     void saveUser(UserEntity userEntity);
 
-    void saveUser2(userJson userJson);
+
 }
