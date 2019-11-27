@@ -24,10 +24,10 @@ public class UserController {
         return userService.getUsers();
     }
 
-    @PostMapping
-    public void saveUser(@RequestBody UserEntity userEntity){
-        userService.saveUser(userEntity);
-    }
+//    @PostMapping
+//    public void saveUser(@RequestBody UserEntity userEntity){
+//        userService.saveUser(userEntity);
+//    }
 
     @PostMapping
     public void saveUser2(@RequestBody userJson userJson){
