@@ -19,7 +19,7 @@ public class UserEntity implements Serializable {
     private static final long serialVersionUID = 4963989636578192356L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     @Column(name = "id_user")
     private Integer idUser;
 
