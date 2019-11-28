@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/exp")
+@RequestMapping(value = "/api/episodes")
 public class EpisodeController {
 
     EpisodeService episodeService;

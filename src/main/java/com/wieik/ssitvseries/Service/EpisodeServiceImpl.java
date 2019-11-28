@@ -24,6 +24,7 @@ public class EpisodeServiceImpl implements EpisodeService {
     public void saveEpisode(EpisodeJson episodeJson) {
         EpisodeEntity episodeEntity = new EpisodeEntity();
         episodeEntity.setTitle(episodeJson.getTitle());
+        System.out.println(episodeEntity);
         episodeDao.saveEpisode(episodeEntity);
     }
 
