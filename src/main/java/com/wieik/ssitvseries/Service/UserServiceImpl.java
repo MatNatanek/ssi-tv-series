@@ -28,7 +28,8 @@ public class UserServiceImpl implements UserService {
     public void saveUser(UserEntity userEntity) {
 
         UserEntity userEntity1 = new UserEntity();
-        userEntity.setLastName("Kowalski");
+        userEntity1.setLastName("Kowalski");
+        userEntity1.setIdUser(1);
         userDao.save(userEntity1);
     }
 
