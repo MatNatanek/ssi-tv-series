@@ -26,6 +26,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void save(UserEntity userEntity) {
         System.out.println("Proba zapisu do bazy");
+        System.out.println(userEntity);
         sessionFactory.getCurrentSession().save(userEntity);
     }
 }

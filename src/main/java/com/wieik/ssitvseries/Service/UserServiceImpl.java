@@ -18,6 +18,7 @@ public class UserServiceImpl implements UserService {
         this.userDao = userDao;
     }
 
+
     @Override
     public List<UserEntity> getUsers() {
         return userDao.getAll();
@@ -27,5 +28,5 @@ public class UserServiceImpl implements UserService {
     public void saveUser(UserEntity userEntity) {
         userDao.save(userEntity);
     }
-    
+
 }
