@@ -25,7 +25,7 @@ public class EpisodeController {
     }
 
     @PostMapping
-    public void saveEpisode(@RequestBody EpisodeJson episodeJson) {
+    public void saveEpisodeEpisode(@RequestBody EpisodeJson episodeJson) {
         episodeService.saveEpisode(episodeJson);
     }
 
