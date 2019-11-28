@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping(value = "/api/episodes")
 public class EpisodeController {
 
-    EpisodeService episodeService;
+    private EpisodeService episodeService;
 
     @Autowired
     public EpisodeController(EpisodeService episodeService) {
@@ -25,7 +25,7 @@ public class EpisodeController {
     }
 
     @PostMapping
-    public void saveEpisodeEpisode(@RequestBody EpisodeJson episodeJson) {
+    public void saveEpisode(@RequestBody EpisodeJson episodeJson) {
         episodeService.saveEpisode(episodeJson);
     }
 
