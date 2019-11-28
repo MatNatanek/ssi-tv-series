@@ -26,15 +26,15 @@ public class UserEntity implements Serializable {
     @Column(name = "last_name")
     private String lastName;
 
-
-    @ManyToMany(cascade = {CascadeType.ALL})
-    @JoinTable(name = "friendship",
-            joinColumns = {@JoinColumn(name = "id_user")},
-            inverseJoinColumns = {@JoinColumn(name = "id_friend")})
-    private Set<UserEntity> usersSet = new HashSet<UserEntity>();
-
-    @ManyToMany(mappedBy = "usersSet")
-    private Set<UserEntity> friendsSet = new HashSet<UserEntity>();
+//
+//    @ManyToMany(cascade = {CascadeType.ALL})
+//    @JoinTable(name = "friendship",
+//            joinColumns = {@JoinColumn(name = "id_user")},
+//            inverseJoinColumns = {@JoinColumn(name = "id_friend")})
+//    private Set<UserEntity> usersSet = new HashSet<UserEntity>();
+//
+//    @ManyToMany(mappedBy = "usersSet")
+//    private Set<UserEntity> friendsSet = new HashSet<UserEntity>();
 
 
 }
