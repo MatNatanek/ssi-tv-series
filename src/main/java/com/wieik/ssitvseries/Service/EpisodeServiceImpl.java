@@ -2,6 +2,7 @@ package com.wieik.ssitvseries.Service;
 
 import com.wieik.ssitvseries.dao.EpisodeDao;
 import com.wieik.ssitvseries.entity.EpisodeEntity;
+import com.wieik.ssitvseries.json.EpisodeJson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,9 @@ public class EpisodeServiceImpl implements EpisodeService {
 
     @Override
     @Transactional
-    public void saveEpisode(EpisodeEntity episodeEntity) {
+    public void saveEpisode(EpisodeJson episodeJson) {
+        EpisodeEntity episodeEntity = new EpisodeEntity();
+        episodeEntity.setTitle(episodeJson.getTitle());
         episodeDao.saveEpisode(episodeEntity);
     }
 

@@ -2,6 +2,7 @@ package com.wieik.ssitvseries.controller;
 
 import com.wieik.ssitvseries.Service.EpisodeService;
 import com.wieik.ssitvseries.entity.EpisodeEntity;
+import com.wieik.ssitvseries.json.EpisodeJson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,8 +25,8 @@ public class EpisodeController {
     }
 
     @PostMapping
-    public void saveEpisode(@RequestBody EpisodeEntity episodeEntity) {
-        episodeService.saveEpisode(episodeEntity);
+    public void saveEpisode(@RequestBody EpisodeJson episodeJson) {
+        episodeService.saveEpisode(episodeJson);
     }
 
 }
