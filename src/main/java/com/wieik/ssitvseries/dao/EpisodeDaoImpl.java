@@ -24,7 +24,6 @@ public class EpisodeDaoImpl implements EpisodeDao {
 
     @Override
     public void saveEpisode(EpisodeEntity episodeEntity){
-        System.out.println(episodeEntity);
         sessionFactory.getCurrentSession().save(episodeEntity);
     }
 

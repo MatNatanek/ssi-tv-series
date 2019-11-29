@@ -1,10 +1,12 @@
 package com.wieik.ssitvseries.dao;
 
+import com.wieik.ssitvseries.entity.EpisodeEntity;
 import com.wieik.ssitvseries.entity.UserEntity;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.Query;
 import java.util.List;
 
 
@@ -25,8 +27,19 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void save(UserEntity userEntity) {
-        System.out.println("Proba zapisu do bazy");
-        System.out.println(userEntity);
         sessionFactory.getCurrentSession().save(userEntity);
+    }
+
+    @Override
+    public void updateUser(UserEntity userEntity) {
+        sessionFactory.getCurrentSession().update(userEntity);
+    }
+
+    @Override
+    public UserEntity getUser(int idUser) {
+        Query query = sessionFactory.getCurrentSession().createQuery("FROM UserEntity where idUser =  :id");
+        query.setParameter("id", idUser);
+        UserEntity userEntity = (UserEntity) query.getSingleResult();
+        return userEntity;
     }
 }

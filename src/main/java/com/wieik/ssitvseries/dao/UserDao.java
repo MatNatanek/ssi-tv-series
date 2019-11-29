@@ -9,4 +9,9 @@ public interface UserDao {
     List<UserEntity> getAll();
 
     void save (UserEntity userEntity);
+
+    void updateUser(UserEntity userEntity);
+
+    UserEntity getUser(int idUser);
+
 }

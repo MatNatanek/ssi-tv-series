@@ -1,15 +1,12 @@
 package com.wieik.ssitvseries.entity;
 
-import lombok.AllArgsConstructor;
+
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "episode", schema = "public")
 public class EpisodeEntity implements Serializable {
@@ -17,8 +14,9 @@ public class EpisodeEntity implements Serializable {
     private static final long serialVersionUID = -1029133493542866090L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_episode")
+    @SequenceGenerator(name = "episode_id_episode_seq", sequenceName = "episode_id_episode_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "episode_id_episode_seq")
+    @Column(name = "id_episode", updatable = false)
     private Integer idEpisode;
 
     @Column(name = "title")

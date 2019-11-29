@@ -2,7 +2,7 @@ package com.wieik.ssitvseries.Service;
 
 import com.wieik.ssitvseries.dao.UserDao;
 import com.wieik.ssitvseries.entity.UserEntity;
-import com.wieik.ssitvseries.json.userJson;
+import com.wieik.ssitvseries.json.UserJson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +19,6 @@ public class UserServiceImpl implements UserService {
         this.userDao = userDao;
     }
 
-
     @Override
     public List<UserEntity> getUsers() {
         return userDao.getAll();
@@ -27,12 +26,23 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void saveUser(UserEntity userEntity) {
-
-        UserEntity userEntity1 = new UserEntity();
-        userEntity1.setLastName("Kowalski");
-        userEntity1.setIdUser(1);
-        userDao.save(userEntity1);
+    public void saveUser(UserJson userJson) {
+        UserEntity userEntity = new UserEntity();
+        userEntity.setLastName(userJson.getLastName());
+        userDao.save(userEntity);
     }
 
+    @Override
+    @Transactional
+    public void addFriend(int userId, int friendId) {
+        UserEntity user = userDao.getUser(userId);
+        UserEntity friend = userDao.getUser(friendId);
+
+        user.getUsersSet().add(friend);
+        System.out.println(user);
+        userDao.updateUser(user);
+
+
+
+    }
 }
