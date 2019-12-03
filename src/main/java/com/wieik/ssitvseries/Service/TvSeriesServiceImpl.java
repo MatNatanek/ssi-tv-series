@@ -1,18 +1,60 @@
 package com.wieik.ssitvseries.Service;
 
+import com.wieik.ssitvseries.dao.TvSeriesDao;
+import com.wieik.ssitvseries.entity.EpisodeEntity;
 import com.wieik.ssitvseries.entity.TvSeriesEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Set;
+
 
 @Service
 public class TvSeriesServiceImpl implements TvSeriesService {
 
+    TvSeriesDao tvSeriesDao;
 
-
+    @Autowired
+    public TvSeriesServiceImpl(TvSeriesDao tvSeriesDao) {
+        this.tvSeriesDao = tvSeriesDao;
+    }
 
     @Override
-    public Set<TvSeriesEntity> getTvSeries() {
-        return null;
+    public List<TvSeriesEntity> getAllTvSeries() {
+        return tvSeriesDao.getAll();
+    }
+
+    @Override
+    public TvSeriesEntity getTvSeries(int tvSeriesId) {
+        return tvSeriesDao.getSeries(tvSeriesId);
+    }
+
+    @Override
+    @Transactional
+    public void addTvSeries(TvSeriesEntity tvSeriesEntity) {
+        tvSeriesDao.add(tvSeriesEntity);
+    }
+
+    @Override
+    @Transactional
+    public void addEpisode(int tvSeriesId, EpisodeEntity episodeEntity) {
+        TvSeriesEntity tvSeriesEntity = tvSeriesDao.getSeries(tvSeriesId);
+        tvSeriesEntity.addEpisode(episodeEntity);
+
+    }
+
+    @Override
+    public Set<EpisodeEntity> getEpisodes(int tvSeriesId) {
+        TvSeriesEntity tvSeriesEntity = tvSeriesDao.getSeries(tvSeriesId);
+        return tvSeriesEntity.getSetOfEpisodes();
+    }
+
+    @Override
+    @Transactional
+    public void deleteSeries(int tvSeriesId) {
+        TvSeriesEntity tvSeriesEntity = tvSeriesDao.getSeries(tvSeriesId);
+        tvSeriesDao.deleteSeries(tvSeriesEntity);
     }
 }

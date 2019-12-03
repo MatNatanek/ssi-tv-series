@@ -36,10 +36,20 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void saveUser(User userJson) {
+    public void saveUser(User user) {
         UserEntity userEntity = new UserEntity();
-        userEntity.setLastName(userJson.getLastName());
+        userEntity.setLastName(user.getLastName());
+        userEntity.setFirstName(user.getFirstName());
+        userEntity.setLogin(user.getLogin());
+        userEntity.setPassword(user.getPassword());
+        userEntity.setRole(user.getRole());
         userDao.save(userEntity);
+    }
+
+    @Override
+    @Transactional
+    public void updateUser(UserEntity user) {
+        userDao.updateUser(user);
     }
 
     @Override
@@ -86,6 +96,10 @@ public class UserServiceImpl implements UserService {
             UserWithoutFriends userWithoutFriends = new UserWithoutFriends();
             userWithoutFriends.setIdUser(userEntity.getIdUser());
             userWithoutFriends.setLastName(userEntity.getLastName());
+            userWithoutFriends.setFirstName(userEntity.getFirstName());
+            userWithoutFriends.setLogin(userEntity.getLogin());
+            userWithoutFriends.setPassword(userEntity.getPassword());
+            userWithoutFriends.setRole(userEntity.getRole());
             setOfUsersWithoutFriends.add(userWithoutFriends);
         }
         return setOfUsersWithoutFriends;
@@ -95,6 +109,10 @@ public class UserServiceImpl implements UserService {
         UserWithUWF userWithUWF = new UserWithUWF();
         userWithUWF.setIdUser(userEntity.getIdUser());
         userWithUWF.setLastName(userEntity.getLastName());
+        userWithUWF.setFirstName(userEntity.getFirstName());
+        userWithUWF.setLogin(userEntity.getLogin());
+        userWithUWF.setPassword(userEntity.getPassword());
+        userWithUWF.setRole(userEntity.getRole());
         userWithUWF.setFriendsSet(removeFriendsFromModel(userEntity.getFriendsSet()));
         return userWithUWF;
     }
@@ -103,6 +121,10 @@ public class UserServiceImpl implements UserService {
         UserWithoutFriends userWF = new UserWithoutFriends();
         userWF.setIdUser(userEntity.getIdUser());
         userWF.setLastName(userEntity.getLastName());
+        userWF.setFirstName(userEntity.getFirstName());
+        userWF.setLogin(userEntity.getLogin());
+        userWF.setPassword(userEntity.getPassword());
+        userWF.setRole(userEntity.getRole());
         return userWF;
     }
 

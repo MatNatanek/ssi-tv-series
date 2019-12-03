@@ -1,5 +1,6 @@
 package com.wieik.ssitvseries.model;
 
+import com.wieik.ssitvseries.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,5 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
-    String lastName;
+    private String lastName;
+    private String firstName;
+    private String login;
+    private String password;
+    private Role role;
 }

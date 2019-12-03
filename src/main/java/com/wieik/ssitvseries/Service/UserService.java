@@ -1,5 +1,6 @@
 package com.wieik.ssitvseries.Service;
 
+import com.wieik.ssitvseries.entity.UserEntity;
 import com.wieik.ssitvseries.model.User;
 import com.wieik.ssitvseries.model.UserWithUWF;
 import com.wieik.ssitvseries.model.UserWithoutFriends;
@@ -20,4 +21,6 @@ public interface UserService {
     Set<UserWithoutFriends> getFriends(int userId);
 
     void deleteUser(int userId);
+
+    void updateUser(UserEntity userEntity);
 }

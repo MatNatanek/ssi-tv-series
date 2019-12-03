@@ -1,5 +1,7 @@
 package com.wieik.ssitvseries.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,6 +27,14 @@ public class TvSeriesEntity implements Serializable {
     @Column(name = "title")
     private String title;
 
+    private String description;
+
+    private String genres;
+
+    @Column(name = "number_of_seasons")
+    private Integer numberOfSeasons;
+
+    @JsonManagedReference
     @OneToMany(mappedBy = "tvSeriesEntity", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<EpisodeEntity> setOfEpisodes = new HashSet<>();
 

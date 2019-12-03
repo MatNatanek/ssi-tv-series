@@ -28,8 +28,13 @@ public class UserController {
     }
 
     @PostMapping
-    public void saveUser(@RequestBody User userJson){
-        userService.saveUser(userJson);
+    public void saveUser(@RequestBody User user){
+        userService.saveUser(user);
+    }
+
+    @PutMapping
+    public void updateUser(@RequestBody UserEntity userEntity){
+        userService.updateUser(userEntity);
     }
 
     @DeleteMapping("/{userId}")

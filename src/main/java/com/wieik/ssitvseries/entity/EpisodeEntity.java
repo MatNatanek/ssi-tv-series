@@ -1,6 +1,7 @@
 package com.wieik.ssitvseries.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -22,7 +23,12 @@ public class EpisodeEntity implements Serializable {
     @Column(name = "title")
     private String title;
 
-    //jakie cascady
+    private Integer season;
+
+    @Column(name = "episode_number")
+    private Integer episodeNumber;
+
+    @JsonBackReference
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name="id_tv_series")
     private TvSeriesEntity tvSeriesEntity;

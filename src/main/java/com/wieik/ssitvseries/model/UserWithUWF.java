@@ -1,5 +1,6 @@
 package com.wieik.ssitvseries.model;
 
+import com.wieik.ssitvseries.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,11 @@ public class UserWithUWF implements Serializable {
 
     private Integer idUser;
     private String lastName;
+    private String firstName;
+    private String login;
+    private String password;
+    private Role role;
+
     private Set<UserWithoutFriends> friendsSet = new HashSet<>();
 
 }

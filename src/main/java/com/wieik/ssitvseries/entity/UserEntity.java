@@ -1,5 +1,6 @@
 package com.wieik.ssitvseries.entity;
 
+import com.wieik.ssitvseries.enums.Role;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,8 +24,21 @@ public class UserEntity implements Serializable {
     @Column(name = "id_user")
     private Integer idUser;
 
+    @Column(name = "first_name")
+    private String firstName;
+
     @Column(name = "last_name")
     private String lastName;
+
+    @Column
+    String login;
+
+    @Column
+    String password;
+
+    @Column
+    @Enumerated(EnumType.STRING)
+    Role role;
 
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(name = "friendship",
