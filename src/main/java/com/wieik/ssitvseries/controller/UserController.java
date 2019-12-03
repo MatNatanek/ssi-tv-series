@@ -2,12 +2,14 @@ package com.wieik.ssitvseries.controller;
 
 import com.wieik.ssitvseries.Service.UserService;
 import com.wieik.ssitvseries.entity.UserEntity;
-import com.wieik.ssitvseries.json.UserJson;
+import com.wieik.ssitvseries.model.User;
+import com.wieik.ssitvseries.model.UserWithUWF;
+import com.wieik.ssitvseries.model.UserWithoutFriends;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping(value = "/api/users")
@@ -21,18 +23,33 @@ public class UserController {
     }
 
     @GetMapping
-    public List<UserEntity> getUsers(){
+    public List<UserWithUWF> getUsers(){
         return userService.getUsers();
     }
 
     @PostMapping
-    public void saveUser(@RequestBody UserJson userJson){
+    public void saveUser(@RequestBody User userJson){
         userService.saveUser(userJson);
+    }
+
+    @DeleteMapping("/{userId}")
+    public void deleteUser(@PathVariable int userId){
+        userService.deleteUser(userId);
+    }
+
+    @GetMapping("/{userId}/friends")
+    public Set<UserWithoutFriends> getFriends(@PathVariable int userId){
+        return userService.getFriends(userId);
     }
 
     @PutMapping("/{userId}/friends/{friendId}")
     public void addFriend(@PathVariable int userId, @PathVariable int friendId){
         userService.addFriend(userId, friendId);
+    }
+
+    @DeleteMapping("/{userId}/friends/{friendId}")
+    public void removeFriend(@PathVariable int userId, @PathVariable int friendId){
+        userService.removeFriend(userId, friendId);
     }
 
 

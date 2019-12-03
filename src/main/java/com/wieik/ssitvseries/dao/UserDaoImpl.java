@@ -1,6 +1,5 @@
 package com.wieik.ssitvseries.dao;
 
-import com.wieik.ssitvseries.entity.EpisodeEntity;
 import com.wieik.ssitvseries.entity.UserEntity;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +27,13 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void save(UserEntity userEntity) {
         sessionFactory.getCurrentSession().save(userEntity);
+    }
+
+    @Override
+    public void deleteUser(int idUser) {
+
+        sessionFactory.getCurrentSession().createSQLQuery("DELETE FROM public.friendship where id_user ="+ idUser + " or id_friend = "+idUser).executeUpdate();
+        sessionFactory.getCurrentSession().createSQLQuery("Delete from public.users where id_user = "+ idUser).executeUpdate();
     }
 
     @Override

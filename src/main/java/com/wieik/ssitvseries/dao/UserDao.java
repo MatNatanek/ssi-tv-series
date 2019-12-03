@@ -14,4 +14,5 @@ public interface UserDao {
 
     UserEntity getUser(int idUser);
 
+    void deleteUser(int idUser);
 }

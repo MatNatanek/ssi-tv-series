@@ -2,12 +2,17 @@ package com.wieik.ssitvseries.Service;
 
 import com.wieik.ssitvseries.dao.UserDao;
 import com.wieik.ssitvseries.entity.UserEntity;
-import com.wieik.ssitvseries.json.UserJson;
+import com.wieik.ssitvseries.model.User;
+import com.wieik.ssitvseries.model.UserWithUWF;
+import com.wieik.ssitvseries.model.UserWithoutFriends;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -20,13 +25,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserEntity> getUsers() {
-        return userDao.getAll();
+    public List<UserWithUWF> getUsers() {
+
+        List<UserEntity> listOfUE = userDao.getAll();
+
+        List<UserWithUWF> listOfUWUWF = converListOfUEtoUWUWF(listOfUE);
+
+        return listOfUWUWF;
     }
 
     @Override
     @Transactional
-    public void saveUser(UserJson userJson) {
+    public void saveUser(User userJson) {
         UserEntity userEntity = new UserEntity();
         userEntity.setLastName(userJson.getLastName());
         userDao.save(userEntity);
@@ -38,11 +48,79 @@ public class UserServiceImpl implements UserService {
         UserEntity user = userDao.getUser(userId);
         UserEntity friend = userDao.getUser(friendId);
 
-        user.getUsersSet().add(friend);
-        System.out.println(user);
-        userDao.updateUser(user);
+        user.addFriend(friend);
+        friend.addFriend(user);
+
+    }
+
+    @Override
+    @Transactional
+    public void deleteUser(int userId) {
+
+        userDao.deleteUser(userId);
+
+    }
+
+    @Override
+    @Transactional
+    public void removeFriend(int userId, int friendId) {
+        UserEntity user = userDao.getUser(userId);
+        UserEntity friend = userDao.getUser(friendId);
+
+        user.removeFriend(friend);
+        friend.removeFriend(user);
+
+    }
+
+    @Override
+    public Set<UserWithoutFriends> getFriends(int userId) {
+        UserEntity user = userDao.getUser(userId);
+        Set<UserWithoutFriends> setOfUWF = converSetOfUEtoUWF(user.getFriendsSet());
+        return setOfUWF;
+    }
 
 
+    private Set<UserWithoutFriends> removeFriendsFromModel(Set<UserEntity> setOfFriends){
+        Set<UserWithoutFriends> setOfUsersWithoutFriends = new HashSet<>();
+        for(UserEntity userEntity: setOfFriends){
+            UserWithoutFriends userWithoutFriends = new UserWithoutFriends();
+            userWithoutFriends.setIdUser(userEntity.getIdUser());
+            userWithoutFriends.setLastName(userEntity.getLastName());
+            setOfUsersWithoutFriends.add(userWithoutFriends);
+        }
+        return setOfUsersWithoutFriends;
+    }
 
+    private UserWithUWF convertUserEntityToUserWithUWF(UserEntity userEntity){
+        UserWithUWF userWithUWF = new UserWithUWF();
+        userWithUWF.setIdUser(userEntity.getIdUser());
+        userWithUWF.setLastName(userEntity.getLastName());
+        userWithUWF.setFriendsSet(removeFriendsFromModel(userEntity.getFriendsSet()));
+        return userWithUWF;
+    }
+
+    private UserWithoutFriends convertUserEntityToUWF(UserEntity userEntity){
+        UserWithoutFriends userWF = new UserWithoutFriends();
+        userWF.setIdUser(userEntity.getIdUser());
+        userWF.setLastName(userEntity.getLastName());
+        return userWF;
+    }
+
+    private List<UserWithUWF> converListOfUEtoUWUWF(List<UserEntity> listOfUE){
+        List<UserWithUWF> listOfUWUWF = new ArrayList<>();
+        for(UserEntity userEntity: listOfUE){
+            UserWithUWF userWithUWF = convertUserEntityToUserWithUWF(userEntity);
+            listOfUWUWF.add(userWithUWF);
+        }
+        return listOfUWUWF;
+    }
+
+    private Set<UserWithoutFriends> converSetOfUEtoUWF(Set<UserEntity> listOfUE){
+        Set<UserWithoutFriends> listOfUWF = new HashSet<>();
+        for(UserEntity userEntity: listOfUE){
+            UserWithoutFriends userWithoutFriends = convertUserEntityToUWF(userEntity);
+            listOfUWF.add(userWithoutFriends );
+        }
+        return listOfUWF;
     }
 }

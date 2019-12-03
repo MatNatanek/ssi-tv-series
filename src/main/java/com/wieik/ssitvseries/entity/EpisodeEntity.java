@@ -22,4 +22,12 @@ public class EpisodeEntity implements Serializable {
     @Column(name = "title")
     private String title;
 
+    //jakie cascady
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name="id_tv_series")
+    private TvSeriesEntity tvSeriesEntity;
+
+
+
+
 }
