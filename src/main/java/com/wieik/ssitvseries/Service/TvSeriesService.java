@@ -19,4 +19,8 @@ public interface TvSeriesService {
     Set<EpisodeEntity> getEpisodes(int tvSeriesId);
 
     void deleteSeries(int tvSeriesId);
+
+    void editTvSeries(TvSeriesEntity tvSeriesEntity);
+
+    void editEpisode(EpisodeEntity episodeEntity, int id);
 }

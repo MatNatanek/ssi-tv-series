@@ -26,6 +26,11 @@ public class TvSeriesController {
         return tvSeriesService.getAllTvSeries();
     }
 
+    @PutMapping
+    public void editTvSeries(@RequestBody TvSeriesEntity tvSeriesEntity){
+        tvSeriesService.editTvSeries(tvSeriesEntity);
+    }
+
     @GetMapping("/{tvSeriesId}")
     public TvSeriesEntity getTvSeries(@PathVariable int tvSeriesId){
         return tvSeriesService.getTvSeries(tvSeriesId);
@@ -37,9 +42,14 @@ public class TvSeriesController {
     }
 
 
-    @PutMapping("/{tvSeriesId}/episodes/")
+    @PostMapping("/{tvSeriesId}/episodes/")
     public void addEpisode(@PathVariable int tvSeriesId, @RequestBody EpisodeEntity episodeEntity){
         tvSeriesService.addEpisode(tvSeriesId, episodeEntity);
+    }
+
+    @PutMapping("/{tvSeriesId}/episodes/")
+    public void editEpisode(@RequestBody EpisodeEntity episodeEntity, @PathVariable int tvSeriesId){
+        tvSeriesService.editEpisode(episodeEntity, tvSeriesId);
     }
 
     @GetMapping("/{tvSeriesId}/episodes/")

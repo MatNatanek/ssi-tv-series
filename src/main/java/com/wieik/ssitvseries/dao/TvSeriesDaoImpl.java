@@ -1,6 +1,8 @@
 package com.wieik.ssitvseries.dao;
 
+import com.wieik.ssitvseries.entity.EpisodeEntity;
 import com.wieik.ssitvseries.entity.TvSeriesEntity;
+import com.wieik.ssitvseries.model.Episode;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -27,6 +29,16 @@ public class TvSeriesDaoImpl implements TvSeriesDao {
     @Override
     public void add(TvSeriesEntity tvSeriesEntity){
         sessionFactory.getCurrentSession().save(tvSeriesEntity);
+    }
+
+    @Override
+    public void updateTvSeries(TvSeriesEntity tvSeriesEntity) {
+        sessionFactory.getCurrentSession().update(tvSeriesEntity);
+    }
+
+    @Override
+    public void updateEpisode(EpisodeEntity episodeEntity) {
+        sessionFactory.getCurrentSession().update(episodeEntity);
     }
 
     @Override

@@ -33,6 +33,12 @@ public class TvSeriesServiceImpl implements TvSeriesService {
 
     @Override
     @Transactional
+    public void editTvSeries(TvSeriesEntity tvSeriesEntity) {
+        tvSeriesDao.updateTvSeries(tvSeriesEntity);
+    }
+
+    @Override
+    @Transactional
     public void addTvSeries(TvSeriesEntity tvSeriesEntity) {
         tvSeriesDao.add(tvSeriesEntity);
     }
@@ -43,6 +49,12 @@ public class TvSeriesServiceImpl implements TvSeriesService {
         TvSeriesEntity tvSeriesEntity = tvSeriesDao.getSeries(tvSeriesId);
         tvSeriesEntity.addEpisode(episodeEntity);
 
+    }
+
+    @Override
+    @Transactional
+    public void editEpisode(EpisodeEntity episodeEntity, int id) {
+        tvSeriesDao.updateEpisode(episodeEntity);
     }
 
     @Override
