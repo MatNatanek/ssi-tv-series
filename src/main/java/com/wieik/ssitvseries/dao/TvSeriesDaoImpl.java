@@ -38,7 +38,13 @@ public class TvSeriesDaoImpl implements TvSeriesDao {
 
     @Override
     public void updateEpisode(EpisodeEntity episodeEntity) {
-        sessionFactory.getCurrentSession().update(episodeEntity);
+        Query query= sessionFactory.getCurrentSession().createSQLQuery("UPDATE public.episode SET title = :title, season =:season, episode_number =: episode_number WHERE id_episode =: id_episode");
+        query.setParameter("title", episodeEntity.getTitle());
+        query.setParameter("season", episodeEntity.getSeason());
+        query.setParameter("episode_number", episodeEntity.getEpisodeNumber());
+        query.setParameter("id_episode", episodeEntity.getIdEpisode());
+        query.executeUpdate();
+
     }
 
     @Override

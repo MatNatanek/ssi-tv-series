@@ -54,14 +54,12 @@ public class TvSeriesServiceImpl implements TvSeriesService {
     @Override
     @Transactional
     public void editEpisode(EpisodeEntity episodeEntity, int tvSeriesId) {
-        TvSeriesEntity tvSeriesEntity = tvSeriesDao.getSeries(tvSeriesId);
-        Set<EpisodeEntity> setOfEpisodeEntity = tvSeriesEntity.getSetOfEpisodes();
-        System.out.println("BEFORE" +setOfEpisodeEntity);
-        setOfEpisodeEntity.remove(episodeEntity);
-        setOfEpisodeEntity.add(episodeEntity);
-        System.out.println("AFTER" +setOfEpisodeEntity);
-        tvSeriesEntity.setSetOfEpisodes(setOfEpisodeEntity);
-        tvSeriesDao.updateTvSeries(tvSeriesEntity);
+//        TvSeriesEntity tvSeriesEntity = tvSeriesDao.getSeries(tvSeriesId);
+//        Set<EpisodeEntity> setOfEpisodeEntity = tvSeriesEntity.getSetOfEpisodes();
+//        setOfEpisodeEntity.remove(episodeEntity);
+//        setOfEpisodeEntity.add(episodeEntity);
+//        tvSeriesEntity.setSetOfEpisodes(setOfEpisodeEntity);
+        tvSeriesDao.updateEpisode(episodeEntity);
     }
 
     @Override
