@@ -22,5 +22,5 @@ public interface TvSeriesService {
 
     void editTvSeries(TvSeriesEntity tvSeriesEntity);
 
-    void editEpisode(EpisodeEntity episodeEntity, int id);
+    void editEpisode(EpisodeEntity episodeEntity, int tvSeriesId);
 }

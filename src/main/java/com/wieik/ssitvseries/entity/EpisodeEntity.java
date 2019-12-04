@@ -3,11 +3,17 @@ package com.wieik.ssitvseries.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
-@Data
+@Getter
+@Setter
+@ToString
 @Entity
 @Table(name = "episode", schema = "public")
 public class EpisodeEntity implements Serializable {
@@ -33,7 +39,16 @@ public class EpisodeEntity implements Serializable {
     @JoinColumn(name="id_tv_series")
     private TvSeriesEntity tvSeriesEntity;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        EpisodeEntity that = (EpisodeEntity) o;
+        return idEpisode.equals(that.idEpisode);
+    }
 
-
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(idEpisode);
+    }
 }
