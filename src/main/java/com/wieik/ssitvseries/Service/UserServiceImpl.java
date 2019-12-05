@@ -158,6 +158,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public void addEpisodeToWatched(int userId, int episodeId) {
         UserEntity userEntity = userDao.getUser(userId);
         EpisodeEntity episodeEntity =  episodeDao.getEpisode(episodeId);
