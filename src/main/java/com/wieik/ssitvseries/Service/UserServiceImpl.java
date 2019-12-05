@@ -68,6 +68,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserWithUWF getUser(int userId) {
+        UserEntity userEntity = userDao.getUser(userId);
+        UserWithUWF userWithUWF = convertUserEntityToUserWithUWF(userEntity);
+        return userWithUWF;
+    }
+
+    @Override
     @Transactional
     public void deleteUser(int userId) {
 

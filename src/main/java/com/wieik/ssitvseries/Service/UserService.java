@@ -28,4 +28,6 @@ public interface UserService {
     Set<EpisodeEntity> getWatchedEpisodes(int userId);
 
     void addEpisodeToWatched(int userId, int episodeId);
+
+    UserWithUWF getUser(int userId);
 }

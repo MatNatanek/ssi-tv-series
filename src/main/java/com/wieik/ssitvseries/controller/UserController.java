@@ -28,6 +28,10 @@ public class UserController {
         return userService.getUsers();
     }
 
+    @GetMapping("/{userId}")
+    public UserWithUWF getUser(@PathVariable int userId){
+        return userService.getUser(userId);
+    }
     @PostMapping
     public void saveUser(@RequestBody User user){
         userService.saveUser(user);
