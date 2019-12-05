@@ -41,6 +41,7 @@ public class EpisodeEntity implements Serializable {
     @JoinColumn(name="id_tv_series")
     private TvSeriesEntity tvSeriesEntity;
 
+    @JsonBackReference
     @ManyToMany(fetch=FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(name = "watched_episode", joinColumns = @JoinColumn(name = "fk_id_episode"), inverseJoinColumns = @JoinColumn(name = "fk_id_user"))
     private Set<UserEntity> setOfUsersThatWatched = new HashSet<>();
