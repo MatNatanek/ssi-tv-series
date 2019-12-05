@@ -1,5 +1,6 @@
 package com.wieik.ssitvseries.model;
 
+import com.wieik.ssitvseries.entity.EpisodeEntity;
 import com.wieik.ssitvseries.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,5 +23,7 @@ public class UserWithUWF implements Serializable {
     private Role role;
 
     private Set<UserWithoutFriends> friendsSet = new HashSet<>();
+    //
+    private Set<EpisodeEntity> watchedEpisodes = new HashSet<>();
 
 }

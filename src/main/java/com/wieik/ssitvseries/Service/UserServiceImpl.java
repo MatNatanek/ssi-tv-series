@@ -118,6 +118,7 @@ public class UserServiceImpl implements UserService {
         userWithUWF.setPassword(userEntity.getPassword());
         userWithUWF.setRole(userEntity.getRole());
         userWithUWF.setFriendsSet(removeFriendsFromModel(userEntity.getFriendsSet()));
+        userWithUWF.setWatchedEpisodes(userEntity.getWatchedEpisodes());
         return userWithUWF;
     }
 
