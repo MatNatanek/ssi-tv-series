@@ -9,7 +9,9 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -38,6 +40,16 @@ public class EpisodeEntity implements Serializable {
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name="id_tv_series")
     private TvSeriesEntity tvSeriesEntity;
+
+    @ManyToMany(fetch=FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinTable(name = "watched_episode", joinColumns = @JoinColumn(name = "fk_id_episode"), inverseJoinColumns = @JoinColumn(name = "fk_id_user"))
+    private Set<UserEntity> setOfUsersThatWatched = new HashSet<>();
+
+    public void addUserThatWatched(UserEntity userEntity){
+        if(userEntity!= null){
+            setOfUsersThatWatched.add(userEntity);
+        }
+    }
 
     @Override
     public boolean equals(Object o) {

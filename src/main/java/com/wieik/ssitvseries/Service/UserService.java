@@ -1,5 +1,6 @@
 package com.wieik.ssitvseries.Service;
 
+import com.wieik.ssitvseries.entity.EpisodeEntity;
 import com.wieik.ssitvseries.entity.UserEntity;
 import com.wieik.ssitvseries.model.User;
 import com.wieik.ssitvseries.model.UserWithUWF;
@@ -23,4 +24,8 @@ public interface UserService {
     void deleteUser(int userId);
 
     void updateUser(UserEntity userEntity);
+
+    Set<EpisodeEntity> getWatchedEpisodes(int userId);
+
+    void addEpisodeToWatched(int userId, int episodeId);
 }

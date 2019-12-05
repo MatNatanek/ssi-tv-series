@@ -44,7 +44,6 @@ public class TvSeriesDaoImpl implements TvSeriesDao {
         query.setParameter("episode_number", episodeEntity.getEpisodeNumber());
         query.setParameter("id_episode", episodeEntity.getIdEpisode());
         query.executeUpdate();
-
     }
 
     @Override

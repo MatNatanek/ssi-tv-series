@@ -1,6 +1,7 @@
 package com.wieik.ssitvseries.entity;
 
 import com.wieik.ssitvseries.enums.Role;
+import com.wieik.ssitvseries.model.Episode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -49,13 +50,25 @@ public class UserEntity implements Serializable {
     @ManyToMany(mappedBy = "friendsSet")
     private Set<UserEntity> usersSet = new HashSet<UserEntity>();
 
+    @ManyToMany(fetch=FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinTable(name = "watched_episode", joinColumns = @JoinColumn(name = "fk_id_user"), inverseJoinColumns = @JoinColumn(name = "fk_id_episode"))
+    private Set<EpisodeEntity> watchedEpisodes = new HashSet<>();
 
-    public void addFriend(UserEntity userEntity){
+
+    public void addFriend(UserEntity userEntity) {
         friendsSet.add(userEntity);
     }
 
-    public void removeFriend(UserEntity userEntity){
+    public void removeFriend(UserEntity userEntity) {
         friendsSet.remove(userEntity);
+    }
+
+    public void addWatchedEpisode(EpisodeEntity episodeEntity){
+        watchedEpisodes.add(episodeEntity);
+    }
+
+    public void removeWatchedEpisode(EpisodeEntity episodeEntity){
+        watchedEpisodes.remove(episodeEntity);
     }
 
 

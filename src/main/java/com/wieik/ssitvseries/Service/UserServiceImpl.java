@@ -1,6 +1,8 @@
 package com.wieik.ssitvseries.Service;
 
+import com.wieik.ssitvseries.dao.EpisodeDao;
 import com.wieik.ssitvseries.dao.UserDao;
+import com.wieik.ssitvseries.entity.EpisodeEntity;
 import com.wieik.ssitvseries.entity.UserEntity;
 import com.wieik.ssitvseries.model.User;
 import com.wieik.ssitvseries.model.UserWithUWF;
@@ -18,10 +20,12 @@ import java.util.Set;
 public class UserServiceImpl implements UserService {
 
     private UserDao userDao;
+    private EpisodeDao episodeDao;
 
     @Autowired
-    public UserServiceImpl(UserDao userDao) {
+    public UserServiceImpl(UserDao userDao, EpisodeDao episodeDao) {
         this.userDao = userDao;
+        this.episodeDao = episodeDao;
     }
 
     @Override
@@ -144,5 +148,18 @@ public class UserServiceImpl implements UserService {
             listOfUWF.add(userWithoutFriends );
         }
         return listOfUWF;
+    }
+
+    @Override
+    public Set<EpisodeEntity> getWatchedEpisodes(int userId) {
+        UserEntity userEntity = userDao.getUser(userId);
+        return userEntity.getWatchedEpisodes();
+    }
+
+    @Override
+    public void addEpisodeToWatched(int userId, int episodeId) {
+        UserEntity userEntity = userDao.getUser(userId);
+        EpisodeEntity episodeEntity =  episodeDao.getEpisode(episodeId);
+        userEntity.getWatchedEpisodes().add(episodeEntity);
     }
 }

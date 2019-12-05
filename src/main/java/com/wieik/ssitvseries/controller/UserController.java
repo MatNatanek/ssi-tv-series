@@ -1,6 +1,7 @@
 package com.wieik.ssitvseries.controller;
 
 import com.wieik.ssitvseries.Service.UserService;
+import com.wieik.ssitvseries.entity.EpisodeEntity;
 import com.wieik.ssitvseries.entity.UserEntity;
 import com.wieik.ssitvseries.model.User;
 import com.wieik.ssitvseries.model.UserWithUWF;
@@ -57,6 +58,15 @@ public class UserController {
         userService.removeFriend(userId, friendId);
     }
 
+    @GetMapping("/{userId}/episodes/")
+    public Set<EpisodeEntity> getWatchedEpisodes(@PathVariable int userId){
+        return userService.getWatchedEpisodes(userId);
+    }
+
+    @PutMapping("/{userId}/episodes/{episodeId}")
+    public void addEpisodeToWatched(@PathVariable int userId, @PathVariable int episodeId ){
+        userService.addEpisodeToWatched(userId, episodeId);
+    }
 
 
 
