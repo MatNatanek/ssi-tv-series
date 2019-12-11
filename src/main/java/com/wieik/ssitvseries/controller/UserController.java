@@ -14,6 +14,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping(value = "/api/users")
+@CrossOrigin(origins = "http://localhost:8081")
 public class UserController {
 
     UserService userService;

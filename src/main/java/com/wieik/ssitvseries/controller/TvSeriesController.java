@@ -8,13 +8,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Set;
-//todo: getListaObejrzanych
-//todo: getListaUzytkownikow ktorzy obejrzeli
-//todo: stworzenie polaczenia
-//todo: usuniecie polaczenia
 
 @RestController
 @RequestMapping(value = "/api/tvseries")
+@CrossOrigin(origins = "http://localhost:8081")
 public class TvSeriesController {
 
     TvSeriesService tvSeriesService;

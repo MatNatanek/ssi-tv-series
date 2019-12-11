@@ -2,7 +2,6 @@ package com.wieik.ssitvseries.dao;
 
 import com.wieik.ssitvseries.entity.EpisodeEntity;
 import com.wieik.ssitvseries.entity.TvSeriesEntity;
-import com.wieik.ssitvseries.model.Episode;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -35,7 +34,7 @@ public class TvSeriesDaoImpl implements TvSeriesDao {
     public void updateTvSeries(TvSeriesEntity tvSeriesEntity) {
         sessionFactory.getCurrentSession().update(tvSeriesEntity);
     }
-
+    
     @Override
     public void updateEpisode(EpisodeEntity episodeEntity) {
         Query query= sessionFactory.getCurrentSession().createSQLQuery("UPDATE public.episode SET title = :title, season =:season, episode_number =:episode_number WHERE id_episode =:id_episode");

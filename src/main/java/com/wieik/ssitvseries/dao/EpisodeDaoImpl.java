@@ -1,7 +1,6 @@
 package com.wieik.ssitvseries.dao;
 
 import com.wieik.ssitvseries.entity.EpisodeEntity;
-import com.wieik.ssitvseries.entity.UserEntity;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
