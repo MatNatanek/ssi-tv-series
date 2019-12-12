@@ -22,5 +22,5 @@ public interface TvSeriesDao {
 
     List<CommentEntity> getAllComments(int tvSeriesId);
 
-    void addComment(int tvSeriesId, CommentEntity commentEntity);
+    void addComment(int tvSeriesId, int userId, CommentEntity commentEntity);
 }

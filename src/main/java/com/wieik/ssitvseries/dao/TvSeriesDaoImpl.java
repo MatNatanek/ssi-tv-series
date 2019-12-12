@@ -68,7 +68,7 @@ public class TvSeriesDaoImpl implements TvSeriesDao {
     }
 
     @Override
-    public void addComment(int tvSeriesId, CommentEntity commentEntity) {
-        sessionFactory.getCurrentSession().createSQLQuery("INSERT INTO public.comment(description, id_user, id_tv_series) VALUES (" + commentEntity.getDescription() + " ,"+ commentEntity.getUserEntity().getIdUser() +" ," + tvSeriesId+ ");" ).executeUpdate();
+    public void addComment(int tvSeriesId,int userId, CommentEntity commentEntity) {
+        sessionFactory.getCurrentSession().createSQLQuery("INSERT INTO public.comment(description, id_user, id_tv_series) VALUES (" + commentEntity.getDescription() + " ,"+ userId +" ," + tvSeriesId+ ");" ).executeUpdate();
     }
 }

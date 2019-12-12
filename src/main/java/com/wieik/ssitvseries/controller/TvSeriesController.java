@@ -32,9 +32,9 @@ public class TvSeriesController {
         return tvSeriesService.getAllComments(tvSeriesId);
     }
 
-    @PostMapping("/{tvSeriesId}/comments")
-    public void addComment(@PathVariable int tvSeriesId, @RequestBody CommentEntity commentEntity){
-        tvSeriesService.addComment(tvSeriesId, commentEntity);
+    @PostMapping("/{tvSeriesId}/comments/{userId}")
+    public void addComment(@PathVariable int tvSeriesId, @PathVariable int userId, @RequestBody CommentEntity commentEntity){
+        tvSeriesService.addComment(tvSeriesId, userId,commentEntity);
     }
 
 

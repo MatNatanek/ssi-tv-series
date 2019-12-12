@@ -58,8 +58,8 @@ public class TvSeriesServiceImpl implements TvSeriesService {
     }
 
     @Override
-    public void addComment(int tvSeriesId, CommentEntity commentEntity) {
-        tvSeriesDao.addComment(tvSeriesId, commentEntity);
+    public void addComment(int tvSeriesId, int userId, CommentEntity commentEntity) {
+        tvSeriesDao.addComment(tvSeriesId, userId ,commentEntity);
     }
 
     @Override
