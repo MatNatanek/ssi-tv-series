@@ -3,7 +3,9 @@ package com.wieik.ssitvseries.entity;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.wieik.ssitvseries.enums.Role;
 import com.wieik.ssitvseries.model.Episode;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -15,6 +17,8 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "users", schema = "public")
 public class UserEntity implements Serializable {
 
