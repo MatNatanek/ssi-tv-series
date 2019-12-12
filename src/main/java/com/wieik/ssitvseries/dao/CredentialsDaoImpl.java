@@ -31,6 +31,7 @@ public class CredentialsDaoImpl implements CredentialsDao {
         Query query = sessionFactory.getCurrentSession().createQuery("From UserEntity where login = :mail");
         query.setParameter("mail", mail);
         UserEntity credentialsEntity = (UserEntity) query.getSingleResult();
+        System.out.println(credentialsEntity);
         return credentialsEntity;
     }
 }
