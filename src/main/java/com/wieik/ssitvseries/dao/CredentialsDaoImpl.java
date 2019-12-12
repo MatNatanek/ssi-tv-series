@@ -28,9 +28,11 @@ public class CredentialsDaoImpl implements CredentialsDao {
 
     @Override
     public UserEntity getUserByMail(String mail) throws NoResultException {
+        System.out.println("tu jestem 15");
         Query query = sessionFactory.getCurrentSession().createQuery("From UserEntity where login = :mail");
         query.setParameter("mail", mail);
         UserEntity credentialsEntity = (UserEntity) query.getSingleResult();
+        System.out.println("tu jestem 17");
         System.out.println(credentialsEntity);
         return credentialsEntity;
     }
