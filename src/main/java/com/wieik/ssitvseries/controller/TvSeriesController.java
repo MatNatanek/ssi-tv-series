@@ -11,7 +11,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping(value = "/api/tvseries")
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "http://localhost:8081", maxAge = 3600)
 public class TvSeriesController {
 
     TvSeriesService tvSeriesService;
