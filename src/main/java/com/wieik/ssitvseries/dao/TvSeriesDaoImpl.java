@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 import java.util.List;
 
 
@@ -68,6 +69,7 @@ public class TvSeriesDaoImpl implements TvSeriesDao {
     }
 
     @Override
+    @Transactional
     public void addComment(int tvSeriesId,int userId, CommentEntity commentEntity) {
         sessionFactory.getCurrentSession().createSQLQuery("INSERT INTO public.comment(description, id_user, id_tv_series) VALUES (" + commentEntity.getDescription() + " ,"+ userId +" ," + tvSeriesId+ ");" ).executeUpdate();
     }
