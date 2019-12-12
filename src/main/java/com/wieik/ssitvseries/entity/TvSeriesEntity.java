@@ -1,6 +1,5 @@
 package com.wieik.ssitvseries.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
@@ -33,6 +32,8 @@ public class TvSeriesEntity implements Serializable {
 
     @Column(name = "number_of_seasons")
     private Integer numberOfSeasons;
+
+    private String imageurl;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "tvSeriesEntity", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
