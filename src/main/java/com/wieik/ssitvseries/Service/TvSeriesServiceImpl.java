@@ -1,6 +1,7 @@
 package com.wieik.ssitvseries.Service;
 
 import com.wieik.ssitvseries.dao.TvSeriesDao;
+import com.wieik.ssitvseries.entity.CommentEntity;
 import com.wieik.ssitvseries.entity.EpisodeEntity;
 import com.wieik.ssitvseries.entity.TvSeriesEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,11 @@ public class TvSeriesServiceImpl implements TvSeriesService {
         TvSeriesEntity tvSeriesEntity = tvSeriesDao.getSeries(tvSeriesId);
         tvSeriesEntity.addEpisode(episodeEntity);
 
+    }
+
+    @Override
+    public List<CommentEntity> getAllComments(int tvSeriesId) {
+        return tvSeriesDao.getAllComments(tvSeriesId);
     }
 
     @Override

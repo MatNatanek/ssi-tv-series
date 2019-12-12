@@ -1,6 +1,7 @@
 package com.wieik.ssitvseries.controller;
 
 import com.wieik.ssitvseries.Service.TvSeriesService;
+import com.wieik.ssitvseries.entity.CommentEntity;
 import com.wieik.ssitvseries.entity.EpisodeEntity;
 import com.wieik.ssitvseries.entity.TvSeriesEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,11 @@ public class TvSeriesController {
     @GetMapping
     public List<TvSeriesEntity> getAllTvSeries(){
         return tvSeriesService.getAllTvSeries();
+    }
+
+    @GetMapping("/{tvSeriesId}/comments")
+    public List<CommentEntity> getAllComments(@PathVariable int tvSeriesId){
+        return tvSeriesService.getAllComments(tvSeriesId);
     }
 
     @PutMapping

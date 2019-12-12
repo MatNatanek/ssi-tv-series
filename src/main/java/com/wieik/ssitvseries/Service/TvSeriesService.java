@@ -1,5 +1,6 @@
 package com.wieik.ssitvseries.Service;
 
+import com.wieik.ssitvseries.entity.CommentEntity;
 import com.wieik.ssitvseries.entity.EpisodeEntity;
 import com.wieik.ssitvseries.entity.TvSeriesEntity;
 
@@ -23,4 +24,6 @@ public interface TvSeriesService {
     void editTvSeries(TvSeriesEntity tvSeriesEntity);
 
     void editEpisode(EpisodeEntity episodeEntity, int tvSeriesId);
+
+    List<CommentEntity> getAllComments(int tvSeriesId);
 }

@@ -53,7 +53,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         System.out.println("JWT: " + jwt);
 
         return ResponseEntity.ok(new AuthenticationResponse(jwt, 1000 , userEntity.getIdUser(),
-                userEntity.getFirstName(), userEntity.getLastName(), userEntity.getRole(),userEntity.getFriendsSet(),
+                userEntity.getFirstName(), userEntity.getLastName(), userEntity.getLogin(), userEntity.getPassword(), userEntity.getRole(),userEntity.getFriendsSet(),
                 userEntity.getWatchedEpisodes()));
     }
 }

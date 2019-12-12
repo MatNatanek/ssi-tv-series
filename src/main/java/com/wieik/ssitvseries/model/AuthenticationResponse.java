@@ -26,6 +26,10 @@ public class AuthenticationResponse implements Serializable {
 
     private String lastName;
 
+    private String login;
+
+    private String password;
+
     String role;
 
     private Set<UserEntity> friendsSet = new HashSet<UserEntity>();

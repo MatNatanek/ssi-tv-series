@@ -1,5 +1,6 @@
 package com.wieik.ssitvseries.dao;
 
+import com.wieik.ssitvseries.entity.CommentEntity;
 import com.wieik.ssitvseries.entity.EpisodeEntity;
 import com.wieik.ssitvseries.entity.TvSeriesEntity;
 
@@ -18,4 +19,6 @@ public interface TvSeriesDao {
     void updateTvSeries(TvSeriesEntity tvSeriesEntity);
 
     void updateEpisode(EpisodeEntity episodeEntity);
+
+    List<CommentEntity> getAllComments(int tvSeriesId);
 }

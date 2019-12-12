@@ -1,5 +1,6 @@
 package com.wieik.ssitvseries.dao;
 
+import com.wieik.ssitvseries.entity.CommentEntity;
 import com.wieik.ssitvseries.entity.EpisodeEntity;
 import com.wieik.ssitvseries.entity.TvSeriesEntity;
 import org.hibernate.SessionFactory;
@@ -56,5 +57,13 @@ public class TvSeriesDaoImpl implements TvSeriesDao {
     @Override
     public void deleteSeries(TvSeriesEntity tvSeriesEntity) {
         sessionFactory.getCurrentSession().delete(tvSeriesEntity);
+    }
+
+    @Override
+    public List<CommentEntity> getAllComments(int tvSeriesId) {
+        Query query = sessionFactory.getCurrentSession().createQuery("FROM CommentEntity where id_tv_series = :id");
+        query.setParameter("id", tvSeriesId);
+        List<CommentEntity> commentEntityList =  query.getResultList();
+        return commentEntityList;
     }
 }
