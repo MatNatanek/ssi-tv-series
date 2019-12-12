@@ -32,10 +32,13 @@ public class CredentialsDaoImpl implements CredentialsDao {
         Query query = sessionFactory.getCurrentSession().createQuery("From UserEntity where login = :mail");
         System.out.println("Jestem tu 16");
         System.out.println(query);
+        List<UserEntity> users = query.getResultList();
+        System.out.println("Size= " + users.size());
 
-        UserEntity credentialsEntity = (UserEntity) query.getSingleResult();
+
+        UserEntity userEntity = (UserEntity) query.getSingleResult();
         System.out.println("tu jestem 17");
-        System.out.println(credentialsEntity);
-        return credentialsEntity;
+        System.out.println(userEntity);
+        return userEntity;
     }
 }
