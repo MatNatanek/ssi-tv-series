@@ -24,6 +24,6 @@ public class UserWithoutFriends implements Serializable {
 
     private String password;
 
-    private Role role;
+    private String role;
 
 }

@@ -20,7 +20,7 @@ public class UserWithUWF implements Serializable {
     private String firstName;
     private String login;
     private String password;
-    private Role role;
+    private String role;
 
     private Set<UserWithoutFriends> friendsSet = new HashSet<>();
     //
