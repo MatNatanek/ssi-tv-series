@@ -43,8 +43,7 @@ public class UserEntity implements Serializable {
     String password;
 
     @Column
-    @Enumerated(EnumType.STRING)
-    Role role;
+    String role;
 
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(name = "friendship",
