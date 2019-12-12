@@ -21,4 +21,6 @@ public interface TvSeriesDao {
     void updateEpisode(EpisodeEntity episodeEntity);
 
     List<CommentEntity> getAllComments(int tvSeriesId);
+
+    void addComment(int tvSeriesId, CommentEntity commentEntity);
 }

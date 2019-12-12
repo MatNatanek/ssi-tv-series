@@ -58,6 +58,11 @@ public class TvSeriesServiceImpl implements TvSeriesService {
     }
 
     @Override
+    public void addComment(int tvSeriesId, CommentEntity commentEntity) {
+        tvSeriesDao.addComment(tvSeriesId, commentEntity);
+    }
+
+    @Override
     @Transactional
     public void editEpisode(EpisodeEntity episodeEntity, int tvSeriesId) {
 //        TvSeriesEntity tvSeriesEntity = tvSeriesDao.getSeries(tvSeriesId);

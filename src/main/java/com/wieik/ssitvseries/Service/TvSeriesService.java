@@ -26,4 +26,6 @@ public interface TvSeriesService {
     void editEpisode(EpisodeEntity episodeEntity, int tvSeriesId);
 
     List<CommentEntity> getAllComments(int tvSeriesId);
+
+    void addComment(int tvSeriesId, CommentEntity commentEntity);
 }
