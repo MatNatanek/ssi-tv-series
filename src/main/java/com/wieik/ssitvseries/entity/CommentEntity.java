@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "episode", schema = "public")
+@Table(name = "comment", schema = "public")
 public class CommentEntity implements Serializable {
 
     private static final long serialVersionUID = 881105127420242837L;
@@ -21,7 +21,7 @@ public class CommentEntity implements Serializable {
     @SequenceGenerator(name = "comment_id_comment_seq", sequenceName = "comment_id_comment_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "comment_id_comment_seq")
     @Column(name = "id_comment", updatable = false)
-    private Integer idComment;
+    private Integer id_comment;
 
     String description;
 

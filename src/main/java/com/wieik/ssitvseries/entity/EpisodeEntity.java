@@ -49,7 +49,6 @@ public class EpisodeEntity implements Serializable {
 
 
 
-
     public void addUserThatWatched(UserEntity userEntity){
         if(userEntity!= null){
             setOfUsersThatWatched.add(userEntity);
