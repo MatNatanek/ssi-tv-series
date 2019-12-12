@@ -30,13 +30,16 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     public ResponseEntity<?> getAuthenticationToken(AuthenticationRequest authenticationRequest) throws Exception{
         try {
+            System.out.println("Jestem tu 1");
             System.out.println("Mail: "+ authenticationRequest.getMail() + "   " + " password: "+ authenticationRequest.getPassword());
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getMail(), authenticationRequest.getPassword()));
         } catch (BadCredentialsException e) {
+            System.out.println("Jestem tu 2");
             System.out.println("Incorrect username or password: "+ authenticationRequest.getMail()+ " " +  authenticationRequest.getPassword());
             e.printStackTrace();
             throw new Exception("Incorrent username or password", e);
         }
+        System.out.println("Jestem tu 3");
         System.out.println("Mail:" + authenticationRequest.getMail());
         final UserDetails userDetails = myUserDetailService.loadUserByUsername(authenticationRequest.getMail());
         final String jwt = jwtUtil.generateToken(userDetails);
