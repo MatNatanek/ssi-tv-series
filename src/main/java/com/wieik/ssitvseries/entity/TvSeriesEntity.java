@@ -37,6 +37,10 @@ public class TvSeriesEntity implements Serializable {
 
     @JsonManagedReference
     @OneToMany(mappedBy = "tvSeriesEntity", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<CommentEntity> setOfComments = new HashSet<>();
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "tvSeriesEntity", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<EpisodeEntity> setOfEpisodes = new HashSet<>();
 
     public void addEpisode(EpisodeEntity episodeEntity){

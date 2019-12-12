@@ -47,11 +47,8 @@ public class EpisodeEntity implements Serializable {
     @JoinTable(name = "watched_episode", joinColumns = @JoinColumn(name = "fk_id_episode"), inverseJoinColumns = @JoinColumn(name = "fk_id_user"))
     private Set<UserEntity> setOfUsersThatWatched = new HashSet<>();
 
-    @JsonManagedReference
-    @OneToMany(mappedBy = "episodeEntity", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<CommentEntity> setOfComments = new HashSet<>();
 
-    
+
 
     public void addUserThatWatched(UserEntity userEntity){
         if(userEntity!= null){

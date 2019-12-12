@@ -33,8 +33,8 @@ public class CommentEntity implements Serializable {
 
     @JsonBackReference
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name="id_episode")
-    private EpisodeEntity episodeEntity;
+    @JoinColumn(name="id_tv_series")
+    private TvSeriesEntity tvSeriesEntity;
 
 
 
