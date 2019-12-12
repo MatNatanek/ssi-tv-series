@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 import java.util.List;
 
 
@@ -27,13 +28,14 @@ public class CredentialsDaoImpl implements CredentialsDao {
     }
 
     @Override
+    @Transactional
     public UserEntity getUserByMail(String mail) throws NoResultException {
         System.out.println("tu jestem 15");
         Query query = sessionFactory.getCurrentSession().createQuery("From UserEntity where login = :mail");
         System.out.println("Jestem tu 16");
         System.out.println(query);
         query.setParameter("mail", mail);
-        
+
         UserEntity userEntity = (UserEntity) query.getSingleResult();
         System.out.println("tu jestem 17");
         System.out.println(userEntity);
