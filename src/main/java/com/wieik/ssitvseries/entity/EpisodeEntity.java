@@ -2,6 +2,7 @@ package com.wieik.ssitvseries.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -45,6 +46,12 @@ public class EpisodeEntity implements Serializable {
     @ManyToMany(fetch=FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(name = "watched_episode", joinColumns = @JoinColumn(name = "fk_id_episode"), inverseJoinColumns = @JoinColumn(name = "fk_id_user"))
     private Set<UserEntity> setOfUsersThatWatched = new HashSet<>();
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "episodeEntity", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<CommentEntity> setOfComments = new HashSet<>();
+
+    
 
     public void addUserThatWatched(UserEntity userEntity){
         if(userEntity!= null){

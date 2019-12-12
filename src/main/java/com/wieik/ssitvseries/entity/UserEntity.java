@@ -59,6 +59,10 @@ public class UserEntity implements Serializable {
     @JsonManagedReference
     private Set<EpisodeEntity> watchedEpisodes = new HashSet<>();
 
+    @JsonManagedReference
+    @OneToMany(mappedBy = "userEntity", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<CommentEntity> setOfComments = new HashSet<>();
+
 
     public void addFriend(UserEntity userEntity) {
         friendsSet.add(userEntity);
