@@ -1,6 +1,7 @@
 package com.wieik.ssitvseries.util;
 
-import com.natanek.pokerrestserwis.service.MyUserDetailService;
+
+import com.wieik.ssitvseries.Service.MyUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
