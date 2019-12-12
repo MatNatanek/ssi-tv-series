@@ -1,5 +1,6 @@
 package com.wieik.ssitvseries.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.wieik.ssitvseries.enums.Role;
 import com.wieik.ssitvseries.model.Episode;
@@ -46,12 +47,14 @@ public class UserEntity implements Serializable {
     String role;
 
     @ManyToMany(cascade = {CascadeType.ALL})
+    @JsonIgnore
     @JoinTable(name = "friendship",
             joinColumns = {@JoinColumn(name = "id_user")},
             inverseJoinColumns = {@JoinColumn(name = "id_friend")})
     private Set<UserEntity> friendsSet = new HashSet<UserEntity>();
 
     @ManyToMany(mappedBy = "friendsSet")
+    @JsonIgnore
     private Set<UserEntity> usersSet = new HashSet<UserEntity>();
 
     @ManyToMany(fetch=FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
