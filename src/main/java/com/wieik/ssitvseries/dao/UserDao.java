@@ -14,5 +14,7 @@ public interface UserDao {
 
     UserEntity getUser(int idUser);
 
+    UserEntity getUserByLogin(String login);
+
     void deleteUser(int idUser);
 }

@@ -48,4 +48,12 @@ public class UserDaoImpl implements UserDao {
         UserEntity userEntity = (UserEntity) query.getSingleResult();
         return userEntity;
     }
+
+    @Override
+    public UserEntity getUserByLogin(String login) {
+        Query query = sessionFactory.getCurrentSession().createQuery("FROM UserEntity where login =  :login");
+        query.setParameter("login", login);
+        UserEntity userEntity = (UserEntity) query.getSingleResult();
+        return userEntity;
+    }
 }

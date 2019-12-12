@@ -30,4 +30,6 @@ public interface UserService {
     void addEpisodeToWatched(int userId, int episodeId);
 
     UserWithUWF getUser(int userId);
+
+
 }

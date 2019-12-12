@@ -1,11 +1,15 @@
 package com.wieik.ssitvseries.model;
 
 
+import com.wieik.ssitvseries.entity.EpisodeEntity;
+import com.wieik.ssitvseries.entity.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -15,6 +19,17 @@ public class AuthenticationResponse implements Serializable {
 
     private String jwt;
     private Integer expirationTime;
-    private String mail;
+
+    private Integer idUser;
+
+    private String firstName;
+
+    private String lastName;
+
+    String role;
+
+    private Set<UserEntity> friendsSet = new HashSet<UserEntity>();
+
+    private Set<EpisodeEntity> watchedEpisodes = new HashSet<>();
 
 }
